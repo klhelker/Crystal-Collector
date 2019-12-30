@@ -4,3 +4,18 @@ body {
 
 }
     
+.crystal-img {
+
+    width: 50%;
+}
+
+#randomNum {
+    color: purple;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.container {
+
+    margin-top: 25px;
+}
