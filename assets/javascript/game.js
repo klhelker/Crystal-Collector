@@ -1,47 +1,62 @@
-
-
-var randomNums = Math.floor(Math.random() * (120 - 19 + 1)) + 19;;
-document.getElementById("randomNum").innerHTML = randomNums;
-
-function myFunction() {
-  randomNums.push();
-  document.getElementById("randomNum").innerHTML = randomNums;
-}
-
-
-var targetNumber = randomNums;
-// Each crystal should have a random hidden value between 1 - 12
-// Here we set the "number-to-guess" header to match the "targetNumber".
-// Eventually this will allow us to change the HTML to match the value in the JavaScript.
-$("#randomNum").text(targetNumber);
+var wins=0;
+var losses=0;
 
 var counter = 0;
 
-var imgCrystal = $("<img>");
+var randomNums = Math.floor(Math.random() * (120 - 19 + 1)) + 19;;
 
-var numberOptions = [1,2,3,4,5,6,7,8,9,10,11,12];
 
-for (var i = 0; i < numberOptions.length; i++){
 
-imgCrystal.attr("data-crystalvalue", numberOptions[i]);}
+// Each crystal should have a random hidden value between 1 - 12
+// Here we set the "number-to-guess" header to match the "targetNumber".
+// Eventually this will allow us to change the HTML to match the value in the JavaScript.
+$("#randomNum").text(randomNums);
 
-$(".crystal-image").on("click", function() {
-    
+function reset (){
+
+    randomNums = Math.floor(Math.random() * (120 - 19 + 1)) + 19;;  
+    $("#randomNum").text(randomNums);
+    randomGuess = Math.floor(Math.random() * (12 - 1 + 1)) + 1;;
+    $("#sapphire").attr("data-crystalvalue",randomGuess)
+    randomGuess = Math.floor(Math.random() * (12 - 1 + 1)) + 1;;
+    $("#ruby").attr("data-crystalvalue",randomGuess)
+    randomGuess = Math.floor(Math.random() * (12 - 1 + 1)) + 1;;
+    $("#emerald").attr("data-crystalvalue",randomGuess)
+    randomGuess = Math.floor(Math.random() * (12 - 1 + 1)) + 1;;
+    $("#diamond").attr("data-crystalvalue",randomGuess)
+    counter=0;
+    $("#currentScore").text(counter);
+}
+  reset()
+
+$(document).on("click", ".crystal-img", function() {
+     
+    console.log("clicking");
 
     var crystalValue = ($(this).attr("data-crystalvalue"));
+
+    console.log(crystalValue);
+
     crystalValue = parseInt(crystalValue);
 
-  counter += 10;
   counter += crystalValue;
+    console.log (counter);
+  $("#currentScore").text(counter);
 
-  alert("New score: " + counter);
-
-  if (counter === targetNumber) {
+  if (counter === randomNums) {
     alert("You win!");
+    wins+=1
+    console.log (wins,losses);
+    print new win value to page $()
+    reset()
   }
 
-  else if (counter >= targetNumber) {
+  else if (counter >= randomNums) {
     alert("You lose!!");
+    losses+=1
+    console.log (wins,losses)
+    print new loss value page $()
+    reset()
   }
 
 });
